@@ -6,9 +6,8 @@ import Menu from './Menu';
 // Now it only re-renders after categorizedItems in App.js is changed.
 // Faster and more efficient.
 const Categories = React.memo(({ items }) => {
-
   return (
-    <div>
+    <div className='section-center'>
       {
         items.map((item) => {
           return (

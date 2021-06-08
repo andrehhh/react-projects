@@ -51,16 +51,24 @@ function App() {
   }
 
   return (
-    <div>
-      {
-        categoryArr.map((category) => {
-          return (
-            <button key={category} onClick={() => changeCategoryTo(category)}>{category}</button>
-          )
-        })
-      }
-      <Categories items={categorizedItems} />
-    </div>
+    <main>
+      <section className="menu section">
+        <div className="title">
+          <h2>our menu</h2>
+          <div className="underline"></div>
+        </div>
+        <div className="btn-container">
+          {
+            categoryArr.map((category) => {
+              return (
+                <button key={category} className="filter-btn" onClick={() => changeCategoryTo(category)}>{category}</button>
+              )
+            })
+          }
+        </div>
+        <Categories items={categorizedItems} />
+      </section>
+    </main>
   )
 }
 
