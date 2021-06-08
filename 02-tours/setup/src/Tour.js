@@ -41,13 +41,17 @@ const Tour = ({ data, removeTour }) => {
   // Since the function used in the button is a toggle-typed button,
   // only the text inside the button is changed.
   return (
-    <>
-      <img src={image} />
-      <h4>{name}</h4>
-      <h4>${price}</h4>
-      <p>{info}</p><button onClick={infoToggle}>{ showMore ? "Read Less" : "Show More" }</button>
-      <button onClick={() => removeTour(id)}>Not Interested</button>
-    </>
+    <article className="single-tour">
+      <img src={image} alt={name}/>
+      <footer>
+        <div className="tour-info">
+          <h4>{name}</h4>
+          <h4 className="tour-price">${price}</h4>
+        </div>
+        <p>{info}<button onClick={infoToggle}>{ showMore ? "Read Less" : "Read More" }</button></p>
+        <button className="delete-btn" onClick={() => removeTour(id)}>Not Interested</button>
+      </footer>
+    </article>
   )
 };
 

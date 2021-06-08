@@ -47,16 +47,18 @@ function App() {
   // If the fetch has finished and tour length is 0, return No Tours Left.
   if(isLoading === false && tours.length === 0) {
     return (
-      <>
-        <h1>No Tours Left</h1>
-        <button onClick={fetchTours}>Refresh</button>
-      </>
+      <main>
+        <div className="title">
+          <h2>No Tours Left</h2>
+          <button className="btn" onClick={fetchTours}>Refresh</button>
+        </div>
+      </main>
     )
   }
 
   return (
     <>
-      { isLoading ? <Loading /> : <Tours data={tours} removeTour={removeTour} /> }
+      { isLoading ? <Loading /> : <main><Tours data={tours} removeTour={removeTour} /></main> }
     </>
   );
 }
