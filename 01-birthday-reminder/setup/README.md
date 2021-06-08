@@ -1,3 +1,3 @@
-## Idea
+### Birthday Reminder
 
-[https://uidesigndaily.com/](https://uidesigndaily.com/posts/sketch-birthdays-list-card-widget-day-1042)
+Built with React including `useState`, `useEffect`, Conditional Rendering with Ternary Operators ( `? :` ).

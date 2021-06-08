@@ -25,10 +25,13 @@ function App() {
 
   // Conditional Rendering with Ternary Operator
   return (
-    <>
-      <List people={people} />
-      { isEmpty ? <h3>List is Empty</h3> : <button onClick={clearPeople}>Clear List</button> }
-    </>
+    <main>
+      <section className="container">
+        <h3>Birthdays Today</h3>
+        <List people={people} />
+        { isEmpty ? <p>List is Empty</p> : <button onClick={clearPeople}>Clear List</button> }
+      </section>
+    </main>
   );
 }
 
