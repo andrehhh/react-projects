@@ -1,4 +1,4 @@
-### Birthday Reminder
+## Birthday Reminder
 
 Built with React including `useState`, `useEffect`, and Conditional Rendering with Ternary Operators ( `? :` ).
 
