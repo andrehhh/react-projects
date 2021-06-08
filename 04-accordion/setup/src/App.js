@@ -4,15 +4,20 @@ import SingleQuestion from './Question';
 
 function App() {
   return (
-    <div style={{color: 'white'}}>
-      {
-        data.map((question) => {
-          return (
-            <SingleQuestion key={question.id} question={question} />
-          )
-        })
-      }
-    </div>
+    <main>
+      <div className='container'>
+        <h3>questions and answers about login</h3>
+        <section className='info'>
+          {
+            data.map((question) => {
+              return (
+                <SingleQuestion key={question.id} question={question} />
+              )
+            })
+          }
+        </section>
+      </div>
+    </main>
   )
 }
 
