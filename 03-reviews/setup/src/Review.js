@@ -48,15 +48,28 @@ const Review = () => {
   }
 
   return (
-    <div>
-      <img src={image} alt={people.name} />
-      <h3>{name}</h3>
-      <h4>{job}</h4>
-      <p>{text}</p>
-      <button onClick={() => changeReview("BEFORE")}>Before</button>
-      <button onClick={() => changeReview("AFTER")}>After</button>
-      <button onClick={() => changeReview("RANDOM")}>Surprise Me</button>
-    </div>
+    <article className='review'>
+      <div className='img-container'>
+        <img src={image} alt={name} className='person-img' />
+        <span className='quote-icon'>
+          <FaQuoteRight />
+        </span>
+      </div>
+      <h4 className='author'>{name}</h4>
+      <p className='job'>{job}</p>
+      <p className='info'>{text}</p>
+      <div className='button-container'>
+        <button className='prev-btn' onClick={() => changeReview("BEFORE")}>
+          <FaChevronLeft />
+        </button>
+        <button className='next-btn' onClick={() => changeReview("AFTER")}>
+          <FaChevronRight />
+        </button>
+      </div>
+      <button className='random-btn' onClick={() => changeReview("RANDOM")}>
+        surprise me
+      </button>
+    </article>
   )
 };
 
