@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-const SingleColor = React.memo(({ color, weight }) => {
+const SingleColor = React.memo(({ index, color, weight }) => {
 
   const [showAlert, setShowAlert] = useState(false);
 
@@ -14,11 +14,14 @@ const SingleColor = React.memo(({ color, weight }) => {
   }
 
   return (
-    <div style={{backgroundColor: color}} onClick={copyToClipboard}>
-      <h1>Color</h1>
-      <p>{weight}%</p>
-      <p>{showAlert && 'Copied to Clipboard'}</p>
-    </div>
+    <article
+      className={`color ${index > 10 && 'color-light'}`}
+      style={{backgroundColor: color}} 
+      onClick={copyToClipboard}>
+      <p className="percent-value">{weight}%</p>
+      <p className="color-value">{color}</p>
+      <p className="alert">{ showAlert && 'Copied to Clipboard' }</p>
+    </article>
   )
 })
 

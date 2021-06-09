@@ -1,3 +1,5 @@
-#### Values JS
+## Colour Generator
 
-[values.js](https://github.com/noeldelgado/values.js)
+Built with React with use of `useState`, Forms, and Conditional Rendering, Background Colour Manipulation, using Values.js.
+
+Site deployed on Netlify : https://andrehhh-color-generator-react.netlify.app/

@@ -8,13 +8,18 @@ function App() {
   // Color list
   const [colors, setColors] = useState(new Values('#45294d').all(10));
 
-  // Color value on input text
-  const [color, setColor] = useState('#45294d');
+  const [color, setColor] = useState('#45294d'); // Color value on input text
+  const [isError, setIsError] = useState(false);
 
   // On submit button, updates color text
   const generateColors = (e) => {
     e.preventDefault();
-    setColors(new Values(color).all(10));
+    try{
+      setColors(new Values(color).all(10));
+    } catch {
+      setIsError(true);
+    }
+    
   }
 
   // On input change, set to the new color value. 
@@ -29,18 +34,29 @@ function App() {
 
   return (
     <>
-      <form onSubmit={generateColors}>
-        <label htmlFor="inputColour"><h2>Color Generator</h2></label>
-        <input type="text" value={color} onChange={(e) => colorOnChange(e.target.value)}/>
-        <button type="submit">Generate</button>
-      </form>
-      {
-        colors.map((color, index) => {
-          return (
-            <SingleColor key={index} color={`#${color.hex}`} weight={color.weight} />
-          )
-        })
-      }
+      <section className='container'>
+        <h3>color generator</h3>
+        <form onSubmit={generateColors}>
+          <input type="text"
+            value={color} 
+            onChange={(e) => colorOnChange(e.target.value)}
+            className={`${isError ? 'error' : null}`} />
+          <button className="btn" type="submit">Generate</button>
+        </form>
+        </section>
+        <section className="colors">
+        {
+          colors.map((color, index) => {
+            return (
+              <SingleColor 
+                key={index} 
+                index={index} 
+                color={`#${color.hex}`} 
+                weight={color.weight} />
+            )
+          })
+        }
+      </section>
     </>
   )
 }
