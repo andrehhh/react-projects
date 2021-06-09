@@ -5,16 +5,27 @@ import data from './data';
 function App() {
 
   // Saves the current Active Review ID
-  const [activeReviewId, setActiveReviewId] = useState(data[0].id);
+  const [activeReviewIndex, setActiveReviewIndex] = useState(0);
 
-  // On Click button function to change activeReviewId depending on the action.
+  useEffect(() => {
+    let timeout = setTimeout(() => {
+      setActiveReviewIndex((prevState) => {
+        return checkNumber(prevState + 1);
+      })
+    }, 5000);
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [activeReviewIndex])
+
+  // On Click button function to change activeReviewIndex depending on the action.
   const changeActiveReview = (action) => {
     if(action === "BEFORE") {
-      const newReviewId = checkNumber(activeReviewId - 1);
-      setActiveReviewId(newReviewId);
+      const newReviewId = checkNumber(activeReviewIndex - 1);
+      setActiveReviewIndex(newReviewId);
     } else if(action === "AFTER"){
-      const newReviewId = checkNumber(activeReviewId + 1);
-      setActiveReviewId(newReviewId);
+      const newReviewId = checkNumber(activeReviewIndex + 1);
+      setActiveReviewIndex(newReviewId);
     }
   }
 
@@ -23,10 +34,10 @@ function App() {
   // Once it reaches the start of the array, we will return the end of the array.
   // Otherwise, return original number.
   const checkNumber = (number) => {
-    if(number > data.length) {
-      return data[0].id;
-    } else if(number < 1) {
-      return data.length;
+    if(number >= data.length) {
+      return 0;
+    } else if(number < 0) {
+      return data.length - 1;
     } else {
       return number;
     }
@@ -35,20 +46,20 @@ function App() {
   return (
     <div>
       {
-        data.map((review) => {
+        data.map((review, index) => {
           const { id, image, name, quote, title } = review;
 
           // Assigns the className to each individual review to meet the animation logic
-          // The activeReviewId is set to activeSlide, that is at the center.
+          // The activeReviewIndex is set to activeSlide, that is at the center.
           // lastSlide class is set to the slide before the activeSlide.
-          // When the activeReviewId is the start of the array, we can use checkNumber function
+          // When the activeReviewIndex is the start of the array, we can use checkNumber function
           // to return the end of the array and set it as lastSlide.
           // The rest of the reviews are set to nextSlide.
           let selectedClass = '';
-          if(id === activeReviewId) {
+          if(index === activeReviewIndex) {
             selectedClass = 'activeSlide'
           } else {
-            if(id === checkNumber(activeReviewId - 1)) {
+            if(index === checkNumber(activeReviewIndex - 1)) {
               selectedClass = 'lastSlide'
             } else {
               selectedClass = 'nextSlide'
