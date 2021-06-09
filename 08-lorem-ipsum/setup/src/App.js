@@ -19,16 +19,22 @@ function App() {
     setParagraphs(newParagraphs);
   }
 
+  const removeParagraphs = (e) => {
+    e.preventDefault();
+    setParagraphs([]);
+    setIsEmpty(true);
+  }
+
   // Paragraphs Mapping component 
   const ParagraphsMapping = () => {
     if(isEmpty) return (
-      <>
+      <article className="lorem-text">
         <h5>No Paragraphs Generated</h5>
-      </>
+      </article>
     )
 
     else return (
-      <>
+      <article className="lorem-text">
         {
           paragraphs.map((paragraph, index) => {
             return (
@@ -36,14 +42,14 @@ function App() {
             )
           })
         }
-      </>
+      </article>
     )
   }
   
   return (
-      <>
-        <h2>Tired of Boring Lorem Ipsum?</h2>
-        <form onSubmit={generateParagraphs}>
+      <section className="section-center">
+        <h3>Tired of Boring Lorem Ipsum?</h3>
+        <form className="lorem-form">
           <label htmlFor="input">Paragraphs: </label>
           <input 
             id="input" 
@@ -51,10 +57,14 @@ function App() {
             min="1" 
             value={inputNumber}
             onChange={(e) => {setInputNumber(e.target.value)}} />
-          <button type="submit">Generate</button>
+          <button className="btn" onClick={generateParagraphs}>Generate</button>
+          <button 
+            className="btn btn-remove" 
+            onClick={removeParagraphs}
+            style={{marginLeft: '0.5rem'}}>Reset</button>
         </form>
         <ParagraphsMapping />
-      </>
+      </section>
     )
 }
 
