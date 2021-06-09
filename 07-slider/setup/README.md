@@ -1,5 +1,5 @@
-# react-projects-7-slider
+## Slider
 
-#### IN ACTION
+Built with React including `useState`, `useEffect`, `prevState`, and switching element classes.
 
-[Gatsby-Airtable Project](https://gatsby-airtable-design-project.netlify.app/)
+Site deployed on Netlify : https://andrehhh-slider-react.netlify.app/

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
 import data from './data';
 function App() {
 
-  // Saves the current Active Review ID
+  // Saves the current Active Review Array Index
   const [activeReviewIndex, setActiveReviewIndex] = useState(0);
 
   useEffect(() => {
@@ -44,7 +44,13 @@ function App() {
   }
   
   return (
-    <div>
+    <section className="section">
+      <div className="title">
+        <h2>
+          <span>/</span>reviews
+        </h2>
+      </div>
+      <div className="section-center">
       {
         data.map((review, index) => {
           const { id, image, name, quote, title } = review;
@@ -69,19 +75,22 @@ function App() {
           return (
             <article key={id} className={selectedClass}>
               <img src={image} alt={name} className="person-img" />
-              <h3>{name}</h3>
-              <h4>{title}</h4>
-              <p>{quote}</p>
+              <h4>{name}</h4>
+              <p className="title">{title}</p>
+              <p className="text">{quote}</p>
+              <FaQuoteRight className="icon" />
             </article>
           )
         })
       }
-      <div style={{position: 'absolute', top: '300px'}}>
-        <button onClick={() => changeActiveReview("BEFORE")}>Left</button>
-        <button onClick={() => changeActiveReview("AFTER")}>Right</button>
+      <button className="prev" onClick={() => changeActiveReview("BEFORE")}>
+          <FiChevronLeft />
+        </button>
+        <button className="next" onClick={() => changeActiveReview("AFTER")}>
+          <FiChevronRight />
+        </button>
       </div>
-      
-    </div>
+    </section>
   )
 }
 
