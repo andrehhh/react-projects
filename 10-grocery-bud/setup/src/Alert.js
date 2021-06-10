@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const Alert = ({ message }) => {
-  return <p>{message}</p>
+const Alert = ({ message, type }) => {
+  return <p className={`alert alert-${type}`}>{message}</p>;
 }
 
 export default Alert
