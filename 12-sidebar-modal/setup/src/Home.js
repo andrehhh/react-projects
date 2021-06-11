@@ -1,8 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { FaBars } from 'react-icons/fa'
 
+import { useGlobalContext } from './context'
+
 const Home = () => {
-  return <h2>home component</h2>
+
+  // Using custom hook to call context values
+  const { toggleModal } = useGlobalContext()
+
+  return (
+    <>
+      <h2>Home Page</h2>
+      <button onClick={() => toggleModal('Modal Text!')}>Show Modal</button>
+    </>
+  )
 }
 
 export default Home
