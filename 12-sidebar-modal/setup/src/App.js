@@ -12,6 +12,8 @@ import Calendar from './Calendar'
 import Documents from './Documents'
 import Error404 from './Error404'
 
+import { FaBars } from 'react-icons/fa'
+
 function App() {
 
   const { modal, toggleSidebar } = useGlobalContext();
@@ -19,7 +21,11 @@ function App() {
   return (
     <>
       <Router>
-        <button onClick={toggleSidebar}>Open Sidebar</button>
+        <button 
+          className='sidebar-toggle' 
+          onClick={() => toggleSidebar('Modal Text!')}>
+          <FaBars />
+        </button>
         <Sidebar />
         <Switch>
           <Route exact path='/'>

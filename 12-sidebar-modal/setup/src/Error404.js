@@ -2,10 +2,10 @@ import React from 'react'
 
 const Error404 = () => {
     return (
-        <div>
+        <main>
             <h2>Error 404</h2>
             <button className='btn'>Back to Home</button>
-        </div>
+        </main>
     )
 }
 

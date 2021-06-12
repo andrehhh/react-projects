@@ -7,25 +7,19 @@ import { FaTimes } from 'react-icons/fa'
 const Modal = () => {
 
   // Using custom hook to call context values
-  const { modal, toggleModal } = useGlobalContext();
+  const { modal, toggleModal } = useGlobalContext()
+  const { status, msg } = modal
 
   // Some CSS to make it functional
   return (
-    <div 
-      style={{
-        top: '0',
-        left: '0',
-        position: 'fixed', 
-        height: '100vh',
-        width: '100%',
-        display: 'grid',
-        placeItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0.3)'}}>
-      <div
-        style={{
-          backgroundColor: 'white'}}>
-        <button onClick={toggleModal}><FaTimes /></button>
-        <h2>{modal.msg}</h2>
+    <div
+      className={`${
+        status ? 'modal-overlay show-modal' : 'modal-overlay'
+      }`}
+    >
+      <div className='modal-container'>
+        <h3>{msg}</h3>
+        <button className='close-modal-btn' onClick={toggleModal}><FaTimes /></button>
       </div>
     </div>
   )

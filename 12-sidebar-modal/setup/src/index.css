@@ -142,7 +142,7 @@ Home
 
 main {
   min-height: 100vh;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
 }

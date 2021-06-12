@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaBars } from 'react-icons/fa'
 
 import { useGlobalContext } from './context'
 
@@ -9,10 +8,10 @@ const Home = () => {
   const { toggleModal } = useGlobalContext()
 
   return (
-    <>
+    <main>
       <h2>Home Page</h2>
-      <button onClick={() => toggleModal('Modal Text!')}>Show Modal</button>
-    </>
+      <button className='btn' onClick={() => toggleModal('Modal Text!')}>Show Modal</button>
+    </main>
   )
 }
 
