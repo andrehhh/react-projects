@@ -5,24 +5,25 @@ const AppContext = React.createContext()
 
 const AppProvider = ({children}) => {
 
-	const [submenu, setSubmenu] = useState({isOpen: false, page: ''})
-	const [showSidebar, setShowSidebar] = useState(false)
+	const [submenu, setSubmenu] = useState({isOpen: false, sublink: sublinks[0], coordinates:{}})
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
-	const openSubmenu = (page) => {
-		setSubmenu({isOpen: true, page})
-	}
+	const openSubmenu = (page, coordinates) => {
+		const sublink = sublinks.find((sublink) => sublink.page === page)
+		setSubmenu({isOpen: true, sublink, coordinates})
+  };
 
-	const closeSubmenu = (page) => {
-		setSubmenu({isOpen: false, page})
+	const closeSubmenu = () => {
+		setSubmenu({...submenu, isOpen: false})
 	}
 
 	const toggleSidebar = () => {
-		setShowSidebar(!showSidebar)
+		setIsSidebarOpen(!isSidebarOpen)
 	}
 
 	return (
 		<AppContext.Provider 
-			value={{sublinks, submenu, showSidebar, openSubmenu, closeSubmenu, toggleSidebar}}>
+			value={{sublinks, submenu, isSidebarOpen, openSubmenu, closeSubmenu, toggleSidebar}}>
 			{children}
 		</AppContext.Provider>
 	)

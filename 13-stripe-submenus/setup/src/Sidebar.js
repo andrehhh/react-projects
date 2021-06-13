@@ -5,34 +5,41 @@ import sublinks from './data'
 
 const Sidebar = () => {
 
-  const { toggleSidebar } = useGlobalContext()
+  const { isSidebarOpen, toggleSidebar } = useGlobalContext()
 
   return (
-    <>
-      <button onClick={toggleSidebar}>Close Sidebar</button>
-      {
-        sublinks.map((sublink, index) => {
-          const { page, links } = sublink
-          return (
-            <div key={index}>
-              <h4>{page}</h4>
-              <ul>
-                {
-                  links.map((link, index) => {
-                    const { label, icon, url } = link
-                    return (
-                      <li key={index}>
-                        <a href={url}>{icon} {label}</a>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          )
-        })
-      }
-    </>
+    <div
+      className={`${
+        isSidebarOpen ? 'sidebar-wrapper show' : 'sidebar-wrapper'
+      }`}>
+      <aside className='sidebar'>
+        <button className='close-btn' onClick={toggleSidebar}>
+          <FaTimes />
+        </button>
+        <div className='sidebar-links'>
+          {
+            sublinks.map((sublink, index) => {
+              const { page, links } = sublink
+              return (
+                <article key={index}>
+                  <h4>{page}</h4>
+                  <div className='sidebar-sublinks'>
+                    {
+                      links.map((link, index) => {
+                        const { label, icon, url } = link
+                        return (
+                            <a key={index} href={url}>{icon} {label}</a>
+                        )
+                      })
+                    }
+                  </div>
+                </article>
+              )
+            })
+          }
+        </div>
+      </aside>
+    </div>
   )
 }
 
