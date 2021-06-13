@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer, useEffect } from 'react'
+import React, { useContext, useReducer, useEffect } from 'react'
 import cartItems from './data'
 import reducer from './reducer'
 // ATTENTION!!!!!!!!!!
@@ -6,13 +6,54 @@ import reducer from './reducer'
 const url = 'https://course-api.com/react-useReducer-cart-project'
 const AppContext = React.createContext()
 
+const initialState = {
+  isLoading: false,
+  cart: cartItems,
+  amount: 0,
+  total: 0
+}
+
 const AppProvider = ({ children }) => {
-  const [cart, setCart] = useState(cartItems)
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  // Fetch data function
+  const fetchData = async () => {
+    dispatch({type: 'LOADING'})
+    const response = await fetch(url)
+    const cartData = await response.json()
+    dispatch({type: 'FETCH_DATA', payload: cartData})
+  }
+
+  // Fetch data on url change
+  useEffect(() => {
+    fetchData()
+  }, [url])
+
+  // Recheck amount and totals if cart changes
+  useEffect(() => {
+    dispatch({type: 'GET_TOTALS'})
+  }, [state.cart])
+
+  // Increment / decrement item from cart
+  const changeItemAmount = (id, action) => {
+    dispatch({type: 'CHANGE_ITEM_AMOUNT', payload: {id: id, change: action}})
+  }
+
+  // Remove item from cart
+  const removeItem = (id) => {
+    dispatch({type: 'REMOVE_ITEM', payload: id})
+  }
+
+  // Clear cart list
+  const clearCart = () => {
+    dispatch({type: 'CLEAR_CART'})
+  }
 
   return (
     <AppContext.Provider
       value={{
-        cart,
+        ...state,
+        changeItemAmount, removeItem, clearCart
       }}
     >
       {children}
