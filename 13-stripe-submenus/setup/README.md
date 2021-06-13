@@ -1,4 +1,4 @@
-## Sidebar Modal
+## Stripe Submenus
 
 Built with React with use of `useState`, `useEffect`, `useRef`.
 
