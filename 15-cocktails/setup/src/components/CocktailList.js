@@ -12,26 +12,29 @@ const CocktailList = () => {
   }
 
   if(!cocktailList) {
-    return <h2>No cocktails</h2>
+    return <h2 className='section-title'>No cocktails</h2>
   }
 
   return (
-    <div>
-      {
-        cocktailList.map((cocktail) => {
-          const { idDrink, strDrink, strGlass, strAlcoholic, strDrinkThumb } = cocktail
-          return (
-              <Cocktail 
-                key={idDrink}
-                id={idDrink}
-                name={strDrink}
-                glassType={strGlass}
-                alcoholicStatus={strAlcoholic}
-                img={strDrinkThumb} />
-          )
-        })
-      }
-    </div>
+    <section className='section'>
+      <h2 className='section-title'>cocktails</h2>
+      <div className='cocktails-center'>
+        {
+          cocktailList.map((cocktail) => {
+            const { idDrink, strDrink, strGlass, strAlcoholic, strDrinkThumb } = cocktail
+            return (
+                <Cocktail 
+                  key={idDrink}
+                  id={idDrink}
+                  name={strDrink}
+                  glassType={strGlass}
+                  alcoholicStatus={strAlcoholic}
+                  img={strDrinkThumb} />
+            )
+          })
+        }
+      </div>
+    </section>
   )
 }
 

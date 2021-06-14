@@ -24,7 +24,7 @@ const AppProvider = ({ children }) => {
         setCocktailList(cocktailsCache)
 
       } else { // No cache saved
-        const data = await fetchData(url)
+        const data = await fetchData(`${url}a`)
         setCocktailsCache(data.drinks)
         setCocktailList(data.drinks)
       }

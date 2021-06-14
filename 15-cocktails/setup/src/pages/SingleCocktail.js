@@ -48,29 +48,42 @@ const SingleCocktail = () => {
   const { strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ingredients } = cocktail
 
   return (
-    <div>
-      <Link to='/'>Back to Home</Link>
-      <h2>{strDrink}</h2>
-      <img src={strDrinkThumb} alt={strDrink} />
-      <ul>
-        <li>Name: {strDrink}</li>
-        <li>Category: {strCategory}</li>
-        <li>Info: {strAlcoholic}</li>
-        <li>Glass: {strGlass}</li>
-        <li>Instructions: {strInstructions}</li>
-        <li>Ingredients: 
-          <ul>
-            {
-              ingredients.map((ingredient, index) => {
-                return (
-                  <li key={index}>{ingredient}</li>
-                )
-              })
-            }
-          </ul>
-        </li>
-      </ul>
-    </div>
+    <section className='section cocktail-section'>
+      <Link to='/' className='btn btn-primary'>
+        back home
+      </Link>
+      <h2 className='section-title'>{strDrink}</h2>
+      <div className='drink'>
+        <img src={strDrinkThumb} alt={strDrink} />
+        <div className='drink-info'>
+          <p>
+          <span className='drink-data'>Name:</span> {strDrink}
+          </p>
+          <p>
+            <span className='drink-data'>Category:</span> {strCategory}
+          </p>
+          <p>
+            <span className='drink-data'>Info:</span> {strAlcoholic}
+          </p>
+          <p>
+            <span className='drink-data'>Glass:</span> {strGlass}
+          </p>
+          <p>
+            <span className='drink-data'>Instructions:</span> {strInstructions}
+          </p>
+          <p>
+            <span className='drink-data'>Ingredients:</span>
+              {
+                ingredients.map((ingredient, index) => {
+                  return (
+                    <span key={index}>{ingredient}</span>
+                  )
+                })
+              }
+          </p>
+        </div>
+      </div>
+    </section>
   )
 }
 

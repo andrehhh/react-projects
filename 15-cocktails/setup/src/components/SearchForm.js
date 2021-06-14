@@ -4,18 +4,26 @@ import { useGlobalContext } from '../context'
 const SearchForm = () => {
 
   const { inputText, search } = useGlobalContext()
+  const searchValue = React.useRef('')
+
+  React.useEffect(() => {
+    searchValue.current.focus()
+  }, [])
 
   return (
-    <div>
-      <form>
-        <label htmlFor='searchInput'>Search Your Favourite Cocktail!</label>
-        <input 
-          type='text' 
-          id='text' 
-          value={inputText} 
-          onChange={(e) => search(e.target.value)} />
+    <section className='section search'>
+      <form className='search-form'>
+        <div className='form-control'>
+          <label htmlFor='text'>search your favorite cocktail</label>
+          <input 
+            type='text' 
+            id='text' 
+            value={inputText} 
+            ref={searchValue}
+            onChange={(e) => search(e.target.value)} />
+        </div>
       </form>
-    </div>
+    </section>
   )
 }
 
