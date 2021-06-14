@@ -16,7 +16,7 @@ const AppProvider = ({ children }) => {
     return await response.json()
   }
 
-  const searchData = async (value) => {
+  const searchData = useCallback(async (value) => {
     setIsLoading(true)
 
     if(value === '') { // No Search Value
@@ -34,11 +34,11 @@ const AppProvider = ({ children }) => {
       setCocktailList(data.drinks)
     }
     setIsLoading(false)
-  }
+  }, [cocktailsCache])
 
   useEffect(() => {
     searchData(inputText)
-  }, [inputText])
+  }, [inputText, searchData])
 
   const search = (value) => {
     setInputText(value)

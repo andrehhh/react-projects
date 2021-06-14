@@ -33,12 +33,16 @@ const SingleCocktail = () => {
         setCocktail(newCocktail)
         setIsLoading(false)
       })
-  }, [url, id])
+  }, [id, fetchData])
 
   if(isLoading) {
     return (
       <Loading />
     )
+  }
+
+  if(!cocktail) {
+    return <h2>No cocktail to display</h2>
   }
 
   const { strDrink, strDrinkThumb, strCategory, strAlcoholic, strGlass, strInstructions, ingredients } = cocktail

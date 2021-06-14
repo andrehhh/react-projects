@@ -11,6 +11,10 @@ const CocktailList = () => {
     return <Loading />
   }
 
+  if(!cocktailList) {
+    return <h2>No cocktails</h2>
+  }
+
   return (
     <div>
       {
