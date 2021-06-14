@@ -5,7 +5,11 @@ import logo from '../logo.svg'
 const Navbar = () => {
   return (
     <div>
-      <h2>navbar component</h2>
+      <img src={logo} alt='logo' />
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+      </ul>
     </div>
   )
 }
