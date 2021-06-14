@@ -1,4 +1,4 @@
-## Cart
+## Cocktails
 
 Built with React with use of `useState`, `useEffect`, `useRef`, `react-rouder-dom` components such as `Router`, `Switch`, `Route`, and `Link`.
 
